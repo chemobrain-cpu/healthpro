@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './SignUp.module.css';
+import styles from './Signup.module.css';
 import avatar from '../assets/health awareness1.png';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
