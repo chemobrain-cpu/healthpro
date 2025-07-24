@@ -13,6 +13,7 @@ import SideBar from './Sidebar';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { markFun } from '../store/action/appStorage';
+import MarkModal from '../Modal/markModal';
 
 const Quiz = () => {
   const [isOpen, setSidebarOpen] = useState(false);
@@ -31,7 +32,15 @@ const Quiz = () => {
   const [answers, setAnswers] = useState([]);
   const [showConfetti, setShowConfetti] = useState(false);
   const [fallingEmojis, setFallingEmojis] = useState([]);
-  const [initialized, setInitialized] = useState(false); // ✅ New flag
+  const [initialized, setInitialized] = useState(false);
+
+  // Modal state
+  const [visibility, setVisibility] = useState(false);
+  const [modalCorrect, setModalCorrect] = useState(false);
+
+  const updateVisibility = () => {
+    setVisibility(false);
+  };
 
   const partyEmojis = [
     '🎉', '🎊', '🥳', '🎈', '✨', '💃', '🕺', '🍾',
@@ -52,7 +61,7 @@ const Quiz = () => {
         }));
 
       setQuestions(filtered);
-      setInitialized(true); // ✅ Prevent re-initialization
+      setInitialized(true);
     }
   }, [allQuiz, id, initialized]);
 
@@ -88,10 +97,12 @@ const Quiz = () => {
     updatedAnswers[currentQ] = selected;
     const gotAns = selected === currentQuestion.answer;
 
+    // Show modal
+    setModalCorrect(gotAns);
+    setVisibility(true);
+
     if (gotAns) {
       triggerConfetti();
-    } else {
-      alert('Incorrect answer!');
     }
 
     setAnswers(updatedAnswers);
@@ -118,12 +129,12 @@ const Quiz = () => {
     let score = 0;
     questions.forEach((q, i) => {
       if (updatedAnswers[i] === q.answer) {
-        score++;
+        score += 5; // each correct answer adds 5 points
       }
     });
 
     navigate('/quiz-result', {
-      state: { score, total: questions.length },
+      state: { score, total: questions.length * 5 }, // total points
     });
   };
 
@@ -168,6 +179,14 @@ const Quiz = () => {
           ))}
         </div>
       )}
+
+      {/* Modal for correct/incorrect answer */}
+      <MarkModal
+        modalVisible={visibility}
+        updateVisibility={updateVisibility}
+        correct={modalCorrect}
+        score={answers.filter((a, i) => a === questions[i]?.answer).length * 5} // score in points
+      />
 
       <SideBar
         handleNavClick={handleNavClick}

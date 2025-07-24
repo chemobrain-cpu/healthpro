@@ -1,0 +1,105 @@
+.modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+    overflow-y: scroll;
+    
+  }
+  
+  .modalView {
+    overflow-y: scroll;
+    background-color: #fff;
+    border-radius: 10px;
+    width:300px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+  
+  .modalState {
+    font-size: 17px;
+    font-family: "'Inter', sans-serif", sans-serif;
+    font-weight: 400;
+    margin-bottom: 15px;
+    color: black;
+  }
+  
+  .modalButtonContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .acceptBtn {
+    width: 90%;
+    padding: 15px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #0d3b66, #092b4c);
+    color: white;
+    font-size: 15px;
+    font-family: "'Inter', sans-serif", sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .iconWrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .successIcon {
+    color: #4caf50;
+    font-size: 3rem;
+  }
+  .failIcon {
+    color: #f44336;
+    font-size: 3rem;
+  }
+  .message {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  .badgeContainer {
+    margin: 15px 0;
+    text-align: center;
+  }
+  .badgeHeading {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .badgeCard {
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 90px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  }
+  .badgeCard .icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .badgeCard .label {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  .badgeCard .points {
+    font-size: 0.8rem;
+    color: #555;
+  }
+  
