@@ -122,7 +122,7 @@ export const checkIfIsLoggedIn = () => async (dispatch) => {
     const userId = await idbGet('userId');
     if (!userId) return { bool: false, message: 'no stored user' };
 
-    const response = await fetch(`http://localhost:9090/userbytoken`, {
+    const response = await fetch(`https://healthpro-backend-rf8l.onrender.com/userbytoken`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ export const checkIfIsLoggedIn = () => async (dispatch) => {
 export const loginFun = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://localhost:9090/login', {
+      let response = await fetch('https://healthpro-backend-rf8l.onrender.com/login', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -197,7 +197,7 @@ export const loginFun = (data) => {
 export const signupFun = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://localhost:9090/signup', {
+      let response = await fetch('https://healthpro-backend-rf8l.onrender.com/signup', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -229,7 +229,7 @@ export const markFun = (data) => {
 
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://localhost:9090/mark', {
+      let response = await fetch('https://healthpro-backend-rf8l.onrender.com/mark', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
